@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle, Users, Zap, Target, ArrowRight, Mail, Phone, MapPin, Award, TrendingUp, Shield } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Index = () => {
   const [formData, setFormData] = useState({
@@ -90,9 +91,12 @@ const Index = () => {
               <a href="#temoignages" className="text-muted-foreground hover:text-primary transition-colors">Témoignages</a>
               <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
             </div>
-            <Button size="sm" className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/80 hover:to-purple-600/80">
-              Nous contacter
-            </Button>
+            <div className="flex items-center space-x-2">
+              <ThemeToggle />
+              <Button size="sm" className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/80 hover:to-purple-600/80">
+                Nous contacter
+              </Button>
+            </div>
           </div>
         </div>
       </nav>
