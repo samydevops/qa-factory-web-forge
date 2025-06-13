@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,8 +7,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle, Users, Zap, Target, ArrowRight, Mail, Phone, MapPin, Award, TrendingUp, Shield } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Index = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -69,10 +71,10 @@ const Index = () => {
   ];
 
   const stats = [
-    { number: "100+", label: "Projets réalisés" },
-    { number: "95%", label: "Satisfaction client" },
-    { number: "60%", label: "Temps de test économisé" },
-    { number: "15+", label: "Années d'expertise" }
+    { number: "100+", label: t("completedProjects") },
+    { number: "95%", label: t("clientSatisfaction") },
+    { number: "60%", label: t("timeSaved") },
+    { number: "15+", label: t("yearsExpertise") }
   ];
 
   return (
@@ -86,15 +88,16 @@ const Index = () => {
               <span className="text-xl font-bold">QA Factory</span>
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</a>
-              <a href="#expertise" className="text-muted-foreground hover:text-primary transition-colors">Expertise</a>
-              <a href="#temoignages" className="text-muted-foreground hover:text-primary transition-colors">Témoignages</a>
-              <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
+              <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">{t("services")}</a>
+              <a href="#expertise" className="text-muted-foreground hover:text-primary transition-colors">{t("expertise")}</a>
+              <a href="#temoignages" className="text-muted-foreground hover:text-primary transition-colors">{t("testimonials")}</a>
+              <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">{t("contact")}</a>
             </div>
             <div className="flex items-center space-x-2">
+              <LanguageSelector />
               <ThemeToggle />
               <Button size="sm" className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/80 hover:to-purple-600/80">
-                Nous contacter
+                {t("contactUs")}
               </Button>
             </div>
           </div>
@@ -108,27 +111,26 @@ const Index = () => {
             <div className="space-y-8 animate-fade-in">
               <div className="space-y-4">
                 <Badge variant="secondary" className="w-fit">
-                  Cabinet de Consulting Expert
+                  {t("expertConsulting")}
                 </Badge>
                 <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                  Transformez votre{' '}
+                  {t("heroTitle").split(" ").slice(0, 2).join(" ")}{' '}
                   <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-                    Qualité Logicielle
+                    {t("heroTitle").split(" ").slice(2).join(" ")}
                   </span>
                 </h1>
                 <p className="text-xl text-muted-foreground leading-relaxed">
-                  QA Factory vous accompagne dans l'automatisation de vos tests et la conduite du changement 
-                  par la qualité. Des ingénieurs experts à votre service pour des résultats mesurables.
+                  {t("heroDescription")}
                 </p>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-gradient-to-r from-primary to-purple-600 hover:from-primary/80 hover:to-purple-600/80">
-                  Découvrir nos services
+                  {t("discoverServices")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button size="lg" variant="outline">
-                  Demander un audit gratuit
+                  {t("requestAudit")}
                 </Button>
               </div>
 
@@ -158,13 +160,12 @@ const Index = () => {
       <section id="services" className="py-20 bg-muted/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4">Nos Services</Badge>
+            <Badge variant="secondary" className="mb-4">{t("ourServices")}</Badge>
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Excellence en Automatisation et Qualité
+              {t("excellenceTitle")}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Des solutions sur-mesure pour optimiser vos processus de test et garantir 
-              la qualité de vos applications critiques.
+              {t("excellenceDescription")}
             </p>
           </div>
 
@@ -419,10 +420,10 @@ const Index = () => {
               <span className="text-xl font-bold">QA Factory</span>
             </div>
             <p className="text-muted-foreground mb-4">
-              Qualité et Agilité - Votre partenaire de confiance pour l'automatisation des tests
+              {t("footerDescription")}
             </p>
             <p className="text-sm text-muted-foreground">
-              © 2024 QA Factory. Tous droits réservés.
+              © 2024 QA Factory. {t("allRightsReserved")}
             </p>
           </div>
         </div>
